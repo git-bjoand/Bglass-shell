@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Glass Shell - BJOAND</title>
+    <!-- Local Offline Icons -->
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--=========================================
+        1. MAIN WRAPPER (TENGAH KIRI & DOCK SLIDE)
+    ==========================================-->
+    <div class="wrapper state-idle" id="sidebarWrapper">
+
+        <!-- Interactive Edge Pill (Muncul di tepi kiri saat idle) -->
+        <div class="dock-edge-pill" id="dockEdgePill" title="Arahkan mouse ke sini untuk membuka sidebar">
+            <div class="edge-pill-glow"></div>
+            <div class="edge-pill-core"></div>
+        </div>
+
+        <!-- Edge Trigger Area (Tengah Kiri) -->
+        <div class="dock-edge-trigger" id="dockEdgeTrigger"></div>
+
+        <!-- DOCK BAR (Slide in from left) -->
+        <aside class="dock-bar" id="dockBar">
+            
+            <!-- Top Dot Indicator -->
+            <div class="dock-top-indicator">
+                <span class="dot-red"></span>
+            </div>
+
+            <!-- Trigger Search Panel Button -->
+            <div class="dock-trigger">
+                <button id="toggleBtn" title="Buka Pencarian Aplikasi">
+                    <svg class="launcher-grid-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="4" width="6.5" height="6.5" rx="2" fill="currentColor"/>
+                        <rect x="13.5" y="4" width="6.5" height="6.5" rx="2" fill="currentColor" fill-opacity="0.5"/>
+                        <rect x="4" y="13.5" width="6.5" height="6.5" rx="2" fill="currentColor" fill-opacity="0.5"/>
+                        <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="dock-separator"></div>
+
+            <!-- Dynamic Pinned Apps List -->
+            <ul class="dock-menu" id="dockMenu">
+                <!-- Rendered dynamically via script.js -->
+            </ul>
+
+            <!-- Button: Add App (Directly opens Explorer to pick app) -->
+            <button class="dock-item dock-add-btn" id="addAppDockBtn" title="Pilih Aplikasi dari Explorer untuk Ditambahkan">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+
+            <div class="dock-separator"></div>
+
+            <!-- Quick Note Button (Alt + N) -->
+            <button id="quickNoteDockBtn" class="dock-action-btn" title="Catatan Cepat (Alt + N)">
+                <i class="fa-solid fa-feather-pointed"></i>
+            </button>
+
+            <!-- Power / Session Options Button -->
+            <button id="closeShellBtn" class="dock-action-btn" title="Opsi Daya & Sistem (Shutdown, Sleep, Restart, dll)">
+                <i class="fa-solid fa-power-off"></i>
+            </button>
+
+            <!-- Bottom Brand Logo Emblem Widget -->
+            <div class="dock-bottom">
+                <div class="dock-brand-emblem" id="dockBrandEmblem" title="BJOAND Workspace">
+                    <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.5L20.5 7.4V16.6L12 21.5L3.5 16.6V7.4L12 2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                        <path d="M12 2.5V12M12 12L20.5 16.6M12 12L3.5 16.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        <path d="M12 7L16.2 9.4V14.6L12 17L7.8 14.6V9.4L12 7Z" fill="rgba(255, 51, 85, 0.35)" stroke="#ff3355" stroke-width="1.4" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="2.2" fill="#ff3355"/>
+                    </svg>
+                </div>
+            </div>
+
+        </aside>
+
+        <!--=========================================
+            2. EXPANDED GLASS PANEL (Search)
+        ==========================================-->
+        <section class="glass-panel" id="glassPanel">
+            
+            <!-- Panel Header -->
+            <div class="panel-header">
+                <div class="digital-clock">
+                    <div class="time-row">
+                        <span id="clockTime" class="clock-time">00:00</span>
+                        <span id="clockSeconds" class="clock-seconds">00</span>
+                    </div>
+                    <span id="clockDate" class="clock-date">Senin, 01 Januari</span>
+                </div>
+                <!-- Precision Minimalist Brand Widget -->
+                <div class="system-brand-widget">
+                    <div class="brand-logo-icon">
+                        <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.5L20.5 7.4V16.6L12 21.5L3.5 16.6V7.4L12 2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                            <path d="M12 2.5V12M12 12L20.5 16.6M12 12L3.5 16.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                            <path d="M12 7L16.2 9.4V14.6L12 17L7.8 14.6V9.4L12 7Z" fill="rgba(255, 51, 85, 0.35)" stroke="#ff3355" stroke-width="1.4" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="2.2" fill="#ff3355"/>
+                        </svg>
+                    </div>
+                    <div class="brand-info-box">
+                        <span class="brand-name">BJOAND</span>
+                        <span class="brand-sub">DESKTOP RICE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="appSearchInput" placeholder="Cari aplikasi laptop Anda..." autocomplete="off">
+                <span class="search-hint">Esc</span>
+            </div>
+
+            <!-- Hardware Telemetry: CPU & RAM -->
+            <div class="system-telemetry-row">
+                <div class="telemetry-card" id="cpuCard" title="Klik untuk membuka Task Manager">
+                    <div class="telemetry-icon cpu-icon">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="telemetry-info">
+                        <div class="telemetry-header">
+                            <span class="telemetry-name">CPU LOAD</span>
+                            <span class="telemetry-val" id="cpuUsageVal">0%</span>
+                        </div>
+                        <div class="telemetry-bar-bg">
+                            <div class="telemetry-bar-fill cpu-bar-fill" id="cpuBarFill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="telemetry-card" id="ramCard" title="Klik untuk membuka Task Manager">
+                    <div class="telemetry-icon ram-icon">
+                        <i class="fa-solid fa-memory"></i>
+                    </div>
+                    <div class="telemetry-info">
+                        <div class="telemetry-header">
+                            <span class="telemetry-name">RAM MEMORY</span>
+                            <span class="telemetry-val" id="ramUsageVal">0%</span>
+                        </div>
+                        <div class="telemetry-bar-bg">
+                            <div class="telemetry-bar-fill ram-bar-fill" id="ramBarFill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1: Suggestions -->
+            <div class="section-title">
+                <span><i class="fa-solid fa-bolt"></i> DISARANKAN</span>
+            </div>
+            
+            <div class="suggestions-grid" id="suggestionsContainer"></div>
+
+            <!-- Section 2: Real Installed Apps List -->
+            <div class="section-title">
+                <span><i class="fa-solid fa-layer-group"></i> SEMUA APLIKASI</span>
+                <span class="app-count" id="appCount">Memuat...</span>
+            </div>
+
+            <div class="apps-list" id="appsListContainer">
+                <div style="text-align: center; padding: 30px; color: var(--text-muted);">
+                    <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 20px; margin-bottom: 8px; display: block;"></i>
+                    Memindai aplikasi terpasang...
+                </div>
+            </div>
+
+            <!-- Panel Footer -->
+            <div class="panel-footer">
+                <div class="footer-user">
+                    <div class="footer-brand-badge">
+                        <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.5L20.5 7.4V16.6L12 21.5L3.5 16.6V7.4L12 2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                            <path d="M12 2.5V12M12 12L20.5 16.6M12 12L3.5 16.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                            <path d="M12 7L16.2 9.4V14.6L12 17L7.8 14.6V9.4L12 7Z" fill="rgba(255, 51, 85, 0.35)" stroke="#ff3355" stroke-width="1.4" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="2.2" fill="#ff3355"/>
+                        </svg>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">BJOAND</span>
+                        <span class="user-sub">Workspace Active • Red Bloom</span>
+                    </div>
+                </div>
+                <div class="footer-actions">
+                    <button class="footer-btn" id="settingsBtn" title="Windows Settings"><i class="fa-solid fa-gear"></i></button>
+                    <button class="footer-btn" id="taskmgrBtn" title="Task Manager"><i class="fa-solid fa-chart-line"></i></button>
+                </div>
+            </div>
+
+        </section>
+
+        <!--=========================================
+            3. FLOATING POWER MENU (Mengambang Dekat Tombol Power)
+        ==========================================-->
+        <div class="power-panel" id="powerPanel">
+            <div class="power-mini-header">
+                <div class="power-mini-title-wrap">
+                    <span class="power-mini-dot"></span>
+                    <span class="power-mini-title">POWER OPTIONS</span>
+                </div>
+                <button class="power-mini-close" id="closePowerBtn" title="Tutup (Esc)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="power-mini-list">
+                <button class="power-option-item opt-shutdown" data-power="shutdown">
+                    <i class="fa-solid fa-power-off"></i>
+                    <span>Shutdown</span>
+                </button>
+
+                <button class="power-option-item opt-restart" data-power="restart">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Restart</span>
+                </button>
+
+                <button class="power-option-item opt-sleep" data-power="sleep">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Sleep</span>
+                </button>
+
+                <button class="power-option-item opt-hibernate" data-power="hibernate">
+                    <i class="fa-solid fa-snowflake"></i>
+                    <span>Hibernate</span>
+                </button>
+
+                <button class="power-option-item opt-lock" data-power="lock">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Lock Screen</span>
+                </button>
+
+                <div class="power-mini-divider"></div>
+
+                <button class="power-option-item opt-shell" data-power="exit-shell">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Tutup Sidebar</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

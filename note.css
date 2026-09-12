@@ -1,0 +1,300 @@
+/*==================================================
+   QUICK NOTE - GLASSMORPHISM RED RICE THEME
+   Focused on Ultra-High Contrast Typography & Ergonomics
+==================================================*/
+
+:root {
+    --accent-red: #ff3355;
+    --accent-red-hover: #ff4d6d;
+    --accent-red-subtle: rgba(255, 51, 85, 0.16);
+    --accent-glow: rgba(255, 51, 85, 0.40);
+    --accent-border: rgba(255, 51, 85, 0.35);
+
+    /* Deep Obsidian Frosted Glass for Maximum Text Legibility */
+    --glass-bg: rgba(14, 11, 20, 0.90);
+    --glass-editor-bg: rgba(10, 7, 14, 0.72);
+    --glass-border: 1px solid rgba(255, 51, 85, 0.30);
+    --glass-inner-border: 1px solid rgba(255, 255, 255, 0.12);
+
+    /* High Contrast Pure White Typography (Contrast > 18:1) */
+    --text-pure: #ffffff;
+    --text-primary: #f5f6fa;
+    --text-secondary: #dcdde1;
+    --text-muted: #959da5;
+
+    --font-main: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+
+    --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-main);
+    background: transparent !important;
+}
+
+/* Ensure FontAwesome compatibility if classes are used */
+[class*="fa-"], .fa-solid, .fa-regular {
+    font-family: var(--_fa-family, "Font Awesome 7 Free", "Font Awesome 6 Free") !important;
+}
+[class*="fa-"]::before, .fa-solid::before, .fa-regular::before {
+    font-family: inherit !important;
+}
+
+/* Crisp SVG Icon Centering */
+.icon-btn svg,
+.note-icon svg {
+    display: block;
+    pointer-events: none;
+}
+
+/* Outer Card Container */
+.note-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card {
+    width: 100%;
+    height: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 
+        0 18px 45px rgba(0, 0, 0, 0.75),
+        0 0 25px rgba(255, 51, 85, 0.14),
+        inset 0 1px 1px rgba(255, 255, 255, 0.20);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-card:focus-within {
+    border-color: rgba(255, 51, 85, 0.55);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.85),
+        0 0 30px rgba(255, 51, 85, 0.22),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+/* Header Bar */
+.note-header {
+    height: 48px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.note-icon {
+    font-size: 14px;
+    color: var(--accent-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-pure);
+    text-transform: uppercase;
+}
+
+.shortcut-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent-red);
+    background: var(--accent-red-subtle);
+    border: 1px solid var(--accent-border);
+    padding: 2px 7px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 12px;
+    display: grid;
+    place-items: center;
+    cursor: pointer !important;
+    transition: all 0.16s var(--ease-snappy);
+    outline: none;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+    color: var(--text-pure);
+    transform: translateY(-1px);
+}
+
+.icon-btn.close-btn:hover {
+    background: rgba(255, 51, 85, 0.25);
+    color: #fff;
+}
+
+.icon-btn:active {
+    transform: scale(0.92);
+}
+
+/* Editor Body */
+.note-body {
+    flex: 1;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.editor-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#noteTextarea {
+    width: 100%;
+    height: 100%;
+    background: var(--glass-editor-bg);
+    border: var(--glass-inner-border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: var(--text-pure);
+    font-size: 14px;
+    font-weight: 450;
+    line-height: 1.65;
+    resize: none;
+    outline: none;
+    user-select: text !important;
+    cursor: text !important;
+    caret-color: var(--accent-red);
+    transition: border-color 0.2s ease, background 0.2s ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 51, 85, 0.3) transparent;
+}
+
+#noteTextarea:focus {
+    border-color: rgba(255, 51, 85, 0.45);
+    background: rgba(10, 7, 14, 0.85);
+}
+
+#noteTextarea::placeholder {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+#noteTextarea::selection {
+    background: rgba(255, 51, 85, 0.40);
+    color: #ffffff;
+}
+
+/* Footer Status Bar */
+.note-footer {
+    height: 36px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.15);
+    font-size: 11px;
+}
+
+.save-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2ed573;
+    box-shadow: 0 0 8px rgba(46, 213, 115, 0.7);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.save-indicator.saving .status-dot {
+    background: #ffa502;
+    box-shadow: 0 0 8px rgba(255, 165, 2, 0.7);
+    animation: dotPulse 0.6s infinite alternate;
+}
+
+@keyframes dotPulse {
+    from { opacity: 0.4; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1.15); }
+}
+
+.note-stats {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 10.5px;
+    letter-spacing: 0.3px;
+}
+
+/* Toast Badge for Copy Feedback */
+.copy-feedback {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(255, 51, 85, 0.95);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 51, 85, 0.5);
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.22s var(--ease-snappy);
+    z-index: 10;
+}
+
+.copy-feedback.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

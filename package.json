@@ -1,0 +1,23 @@
+{
+  "name": "bjoand-shell",
+  "version": "1.0.0",
+  "description": "BJOAND Glassmorphic Desktop Shell (Sidebar & Quick Note) for Windows",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "windows",
+    "shell",
+    "glassmorphism",
+    "launcher"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^34.5.8"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1"
+  }
+}

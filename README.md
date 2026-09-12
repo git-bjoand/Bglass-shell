@@ -1,60 +1,50 @@
 # ?? Bglass-Shell (BJOAND)
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078d4.svg?style=flat-square&logo=windows)](https://www.microsoft.com)
-[![Framework](https://img.shields.io/badge/Framework-Electron%2034-47848f.svg?style=flat-square&logo=electron)](https://www.electronjs.org/)
-[![License](https://img.shields.io/badge/License-MIT-emerald.svg?style=flat-square)](LICENSE)
-[![RAM Footprint](https://img.shields.io/badge/RAM%20Idle-~60--100%20MB-brightgreen.svg?style=flat-square)](https://github.com)
+<p align="center">
+  <img src="image.png" alt="Bglass-Shell Desktop Environment Preview" width="100%">
+</p>
 
-A lightweight, minimalist glassmorphic desktop environment companion for Windows. Built with native Electron and frosted acrylic glass styling, **Bglass-Shell** combines an auto-scaling app dock with hardware telemetry and an instant, distraction-free **Quick Note (`Alt + N`)**.
+<p align="center">
+  <a href="https://www.microsoft.com"><img src="https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078d4.svg?style=for-the-badge&logo=windows" alt="Windows"></a>
+  <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Framework-Electron%2034-47848f.svg?style=for-the-badge&logo=electron" alt="Electron"></a>
+  <img src="https://img.shields.io/badge/RAM%20Usage-~60--100%20MB-2ea44f.svg?style=for-the-badge" alt="RAM Footprint">
+  <img src="https://img.shields.io/badge/License-MIT-e36209.svg?style=for-the-badge" alt="License">
+</p>
 
 ---
 
-## ? Features Overview
+## ?? Overview
 
-### 1. ??? Clean Glass Sidebar (Left Dock)
-- **Zero-Hitbox Idle Passthrough**: When idle, the sidebar shrinks into a sleek 16px edge pill indicator. Mouse clicks pass directly through to games and underlying windows (`setIgnoreMouseEvents(true, { forward: true })`).
-- **Dynamic Auto-Scaling**: Dock height automatically calculates and scales depending on your pinned apps (supports up to 8 pinned applications).
-- **Direct App Picker (+)**: Click the plus button to pick any `.exe`, `.lnk`, or `.url` shortcut directly from Windows File Explorer.
-- **Search & Start Menu Integration**: Real-time app search indexed from Windows Start Menu programs.
-- **Live Hardware Telemetry**: Low-overhead real-time CPU & RAM usage telemetry widgets.
-- **Power & Session Control**: Instant access to Shutdown, Restart, Sleep, Hibernate, and Screen Lock.
+**Bglass-Shell** is a lightweight, minimalist glassmorphic desktop environment and productivity suite for Windows. Engineered with native Electron and modern frosted acrylic glass aesthetics, **Bglass-Shell** seamlessly integrates:
 
-### 2. ?? Instant Quick Note (`Alt + N`)
-- **Global Shortcut**: Press `Alt + N` from anywhere in Windows to summon or dismiss the note window.
+1. ??? **Clean Glass Sidebar (Left Dock)**: An auto-scaling application launcher, Start Menu search engine, real-time hardware telemetry (CPU & RAM), and native power controls.
+2. ?? **Instant Quick Note (Right Window - `Alt + N`)**: A distraction-free, high-contrast obsidian scratchpad with live dual auto-save and word counters.
+
+Designed from the ground up for speed, low memory usage (~60–100 MB RAM), and zero distraction — floating gracefully above whatever personal desktop wallpaper you use.
+
+---
+
+## ? Key Features
+
+### ??? 1. Clean Glass Dock & Search Panel
+- **Zero-Hitbox Idle Passthrough**: When idle, the sidebar shrinks into a discreet 16px edge pill indicator. Mouse clicks pass 100% through to games and background windows (`setIgnoreMouseEvents(true, { forward: true })`).
+- **Dynamic Auto-Scaling**: Dock height automatically scales based on the number of pinned apps (supports up to 8 pinned apps).
+- **Start Menu Search Engine**: Type to instantly filter and launch all installed Windows applications.
+- **Hardware Telemetry Widgets**: Real-time CPU Load (%) and RAM Memory utilization (GB / %) bars.
+- **Direct Explorer App Picker (`+`)**: Pick any executable (`.exe`), shortcut (`.lnk`), or URL directly from File Explorer.
+- **Power & Session Management**: Dedicated floating popover for Shutdown, Restart, Sleep, Hibernate, and Screen Lock.
+
+### ?? 2. Instant Quick Note (`Alt + N`)
+- **Global Hotkey (`Alt + N`)**: Summon and dismiss the note scratchpad instantly from anywhere in Windows.
 - **High-Contrast Typography**: Ultra-legible pure white text on deep obsidian frosted glass (contrast ratio > 18:1).
-- **Dual Instant Auto-Save**: Saves keystroke-by-keystroke to `localStorage` and automatically commits to `quicknote.txt`.
-- **Quick Utility Actions**: One-click Copy to Clipboard with toast confirmation, Clear, and live word/character statistics.
+- **Dual Keystroke Auto-Save**: Saves instantly to `localStorage` and automatically commits to `quicknote.txt`.
+- **Crisp Inline SVG Icons**: Feather badge, Copy to Clipboard with toast feedback, Clear note, and Close buttons.
+- **Live Counter**: Real-time word and character counter (`X kata • Y karakter`).
 
-### 3. ? Zero-Bloat Performance
-- **Standalone Runtime**: Runs completely independently of third-party wallpaper engines (0% idle CPU overhead).
-- **Native Wallpaper Compatibility**: Floats with translucent frosted glass above your existing Windows desktop background.
-- **Silent Boot**: Includes `Bglass-shell.vbs` for Windows Startup without command-prompt flashes.
-
----
-
-## ??? Results & Preview
-
-```text
- +---------------------------+                        +------------------------------+
- ¦ [•] Indicator Pill (Idle) ¦                        ¦ ?? QUICK NOTE   [Alt + N]    ¦
- +---------------------------¦                        +------------------------------¦
- ¦  ? App Search Launcher    ¦                        ¦                              ¦
- ¦  ? Google Chrome          ¦   [Alt + N]            ¦ Type quick notes here...     ¦
- ¦  ? VS Code                ¦  ------------?         ¦ Auto-saved to quicknote.txt  ¦
- ¦  ? Windows Terminal       ¦                        ¦                              ¦
- ¦  ? Spotify                ¦                        +------------------------------¦
- ¦  [+] Add App (Explorer)   ¦                        ¦ ? Saved       12 words · 84 c¦
- ¦  ? Power Controls        ¦                        +------------------------------+
- +---------------------------+
-```
-
-> **Visual Preview**:
->
-> *(Screenshots can be added here once taken)*
->
-> | Left Dock & App Launcher | Quick Note Scratchpad (`Alt + N`) |
-> | :---: | :---: |
-> | ![Sidebar Preview](docs/sidebar-preview.png) | ![Quick Note Preview](docs/quicknote-preview.png) |
+### ? 3. Lightweight & Bloat-Free
+- **Standalone Runtime**: Completely independent of third-party wallpaper engines (0% idle CPU overhead).
+- **Universal Wallpaper Support**: Floats with translucent frosted glass above your existing Windows wallpaper without modifying system backgrounds.
+- **Silent Boot Option**: Includes `Bglass-shell.vbs` for Windows Startup without console window flashes.
 
 ---
 
@@ -65,64 +55,62 @@ A lightweight, minimalist glassmorphic desktop environment companion for Windows
 | **Operating System** | Windows 10 (Build 19041+) or Windows 11 (64-bit) |
 | **Node.js** | Node.js v18.0.0 or higher (v20+ or v24 recommended) |
 | **Package Manager** | `npm` (bundled with Node.js) |
-| **Hardware** | Any modern multi-core x64 processor, 4 GB+ RAM |
+| **Hardware** | Any modern x64 processor, 4 GB+ RAM |
 
 ---
 
-## ?? Setup & Installation Guide
+## ?? Installation & Setup Guide
 
-### Step 1: Clone or Download the Repository
-Clone this repository to your preferred local directory:
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/your-username/bjoand-shell.git
 cd bjoand-shell
 ```
 
-### Step 2: Install Dependencies
-Install the required Electron runtime and FontAwesome icon set:
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-### Step 3: Run the Desktop Shell
-You can test and launch the shell immediately using either method:
-- **Via Batch File**: Double-click `Bglass-shell.bat`
-- **Via Terminal**:
+### 3. Launch the Shell
+You can launch **Bglass-Shell** immediately using either method:
+- **Direct Launch**: Double-click `Bglass-shell.bat`
+- **Via Command Line**:
   ```bash
   npm start
   ```
 
 ---
 
-## ?? How to Setup Auto-Start on Windows Boot
+## ?? Auto-Start on Windows Boot (Silent)
 
-To have **Bglass-Shell** automatically start in the background when you turn on your PC:
+To automatically launch **Bglass-Shell** silently when your computer starts:
 
 1. Press `Win + R` on your keyboard to open the **Run** dialog.
-2. Type `shell:startup` and press **Enter** (this opens your Windows Startup folder).
+2. Type `shell:startup` and press **Enter** (opens your Windows Startup folder).
 3. Right-click inside the folder > **New** > **Shortcut**.
-4. In the target path, type:
+4. Set the Target path to:
    ```text
    wscript.exe "D:\project\bjoand-shell\Bglass-shell.vbs"
    ```
-   *(Replace with the actual path where you placed the project folder).*
+   *(Update the folder path if your project is located in another directory).*
 5. Name the shortcut `Bglass-Shell` and click **Finish**.
 
-> [!TIP]
+> [!NOTE]
 > **Why `Bglass-shell.vbs`?**  
-> Running `Bglass-shell.vbs` executes Node/Electron silently in the background via Windows Script Host, meaning **zero black CMD console flashes** appear during Windows startup.
+> `Bglass-shell.vbs` runs the process through Windows Script Host in the background, ensuring **zero black CMD console flashes** appear during Windows login.
 
 ---
 
-## ?? Controls & Shortcuts
+## ?? Shortcuts & Controls
 
 | Shortcut / Trigger | Action |
 | :--- | :--- |
 | **`Alt + N`** | Toggle Quick Note window open / closed from anywhere. |
-| **Hover Left Screen Edge** | Reveal and expand the glass dock from idle mode. |
+| **Hover Left Screen Edge** | Reveal and slide in the glass dock from idle mode. |
 | **`Esc`** | Dismiss Quick Note or active search / power panel. |
 | **`Win` Key or Click Outside** | Auto-collapse sidebar back into idle mode. |
-| **Click `(+)` on Dock** | Open Windows File Explorer to browse and pin any application. |
+| **Click `(+)` on Dock** | Open File Explorer to select and pin any app. |
 
 ---
 
@@ -130,23 +118,24 @@ To have **Bglass-Shell** automatically start in the background when you turn on 
 
 ```text
 bjoand-shell/
-+-- .gitignore              # Ignores node_modules/ and logs
-+-- Bglass-shell.bat        # Manual executable launcher
-+-- Bglass-shell.vbs        # Silent background launcher (for Startup)
-+-- index.html              # Left sidebar & dock markup
++-- .gitignore              # Ignores node_modules and logs
++-- Bglass-shell.bat        # Manual batch launcher
++-- Bglass-shell.vbs        # Silent background launcher (for Windows Startup)
++-- image.png               # Showcase preview screenshot
++-- index.html              # Left sidebar & dock interface
 +-- style.css               # Glassmorphism styling, animations & theme
-+-- script.js               # Dock controller, app pinning & telemetry
++-- script.js               # Dock controller, app search & telemetry
 +-- note.html               # Quick Note window interface
-+-- note.css                # High-contrast obsidian typography styling
-+-- note.js                 # Dual auto-save & word counters logic
-+-- quicknote.txt           # Persistent text storage for notes
-+-- main.js                 # Electron main process (lifecycle & multi-window)
-+-- package.json            # Project manifest & dependencies
-+-- package-lock.json       # Exact dependency lockfile
++-- note.css                # High-contrast obsidian glass styling
++-- note.js                 # Dual auto-save & stats counter logic
++-- quicknote.txt           # Persistent text storage for quick notes
++-- main.js                 # Electron process (window manager & IPC)
++-- package.json            # Manifest & project metadata
++-- package-lock.json       # Lockfile
 ```
 
 ---
 
 ## ?? License
 
-This project is licensed under the **MIT License** — feel free to use, customize, and modify it for your personal desktop environment.
+This project is licensed under the **MIT License** — feel free to use, customize, and modify it for your personal desktop setup.
